@@ -11,11 +11,15 @@ import androidx.appcompat.widget.Toolbar;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Button;
 
 public class MainActivity extends AppCompatActivity {
 
     Note tempNote = new Note();
 
+    public void createNewNote(Note note) {
+        tempNote = note;
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +37,16 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        final Button button = (Button) findViewById(R.id.button);
+
+        button.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                DialogShowNote dialog = new DialogShowNote();
+                dialog.sendNoteSelected(tempNote);
+                dialog.show(getSupportFragmentManager(), "123");
+            }
+        });
     }
 
     @Override
@@ -57,7 +71,5 @@ public class MainActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    public void createNewNote(Note note) {
-        tempNote = note;
-    }
+
 }

@@ -36,11 +36,11 @@ public class DialogShowNote extends DialogFragment {
             textImportant.setVisibility(View.GONE);
         }
 
-        if (!note.isImportant()) {
+        if (!note.isTodo()) {
             textTodo.setVisibility(View.GONE);
         }
 
-        if (!note.isImportant()) {
+        if (!note.isIdea()) {
             textIdea.setVisibility(View.GONE);
         }
 
@@ -51,7 +51,7 @@ public class DialogShowNote extends DialogFragment {
             }
         });
 
-        return builder.create();
+        return builder.setView(dialogView).create();
 
     }
 
