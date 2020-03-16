@@ -14,6 +14,9 @@ import android.view.MenuItem;
 
 public class MainActivity extends AppCompatActivity {
 
+    Note tempNote = new Note();
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -25,10 +28,11 @@ public class MainActivity extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+                DialogNewNote dialog = new DialogNewNote();
+                dialog.show(getSupportFragmentManager(), "");
             }
         });
+
     }
 
     @Override
@@ -53,6 +57,7 @@ public class MainActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    public void createNewNote(Note newNote) {
+    public void createNewNote(Note note) {
+        tempNote = note;
     }
 }
