@@ -11,6 +11,8 @@ import android.widget.EditText;
 
 import androidx.fragment.app.DialogFragment;
 
+import java.util.ArrayList;
+
 public class DialogNewNote extends DialogFragment {
     @Override
     public Dialog onCreateDialog (Bundle savedInstanceState){
@@ -29,6 +31,7 @@ public class DialogNewNote extends DialogFragment {
             final Button btnCancel = (Button)dialogView.findViewById(R.id.btnCancel);
             final Button btnOk = (Button)dialogView.findViewById(R.id.btnOk);
 
+        final ArrayList Notee = new ArrayList<>();
 
             builder.setView(dialogView).setMessage("Add a new note");
 
@@ -43,7 +46,8 @@ public class DialogNewNote extends DialogFragment {
                 @Override
                 public void onClick(View v) {
 
-                    Note newNote =new Note();
+                    Note newNote = new Note();
+
 
                     newNote.setTitle(editTitle.getText().toString());
                     newNote.setDescription(editDescription.getText().toString());

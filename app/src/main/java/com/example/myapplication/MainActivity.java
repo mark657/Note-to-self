@@ -13,12 +13,14 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Button;
 
-public class MainActivity extends AppCompatActivity {
+import java.util.ArrayList;
 
-    Note tempNote = new Note();
+public class MainActivity extends AppCompatActivity {
+    ArrayList<Note> listNote = new ArrayList<>();
+
 
     public void createNewNote(Note note) {
-        tempNote = note;
+        listNote.add(note);
     }
 
     @Override
@@ -37,16 +39,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        final Button button = (Button) findViewById(R.id.button);
 
-        button.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View v) {
-                DialogShowNote dialog = new DialogShowNote();
-                dialog.sendNoteSelected(tempNote);
-                dialog.show(getSupportFragmentManager(), "123");
-            }
-        });
     }
 
     @Override
